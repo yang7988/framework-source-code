@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="customEditorConfigurer" class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+        <property name="customEditors">
+            <map>
+                <entry key="java.util.Date" value="com.jackson.util.UtilDatePropertyEditor"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="student" class="com.jackson.pojo.User">
+        <property name="id" value="1"/>
+        <property name="name" value="jackson"/>
+        <property name="age" value="25"/>
+        <property name="sex" value="1"/>
+        <!--<property name="createDate" value="2020-06-13 14:18:10"/>
+        <property name="updateDate" value="2020-06-13 14:18:10"/>-->
+        <property name="profession" value="学生"/>
+        <property name="hobbies">
+            <list>
+                <value type="java.lang.String">篮球</value>
+                <value type="java.lang.String">音乐</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="teacher" class="com.jackson.pojo.User">
+        <property name="id" value="1"/>
+        <property name="name" value="rick"/>
+        <property name="age" value="35"/>
+        <property name="sex" value="2"/>
+        <!--<property name="createDate" value="2020-06-13 14:18:10"/>
+        <property name="updateDate" value="2020-06-13 14:18:10"/>-->
+        <property name="profession" value="教师"/>
+        <property name="hobbies">
+            <list>
+                <value type="java.lang.String">音乐</value>
+                <value type="java.lang.String">影视</value>
+                <value type="java.lang.String">财经</value>
+            </list>
+        </property>
+    </bean>
+
+</beans>
