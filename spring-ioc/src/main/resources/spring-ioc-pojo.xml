@@ -3,13 +3,13 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="customEditorConfigurer" class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+    <!--<bean id="customEditorConfigurer" class="org.springframework.beans.factory.config.CustomEditorConfigurer">
         <property name="customEditors">
             <map>
                 <entry key="java.util.Date" value="com.jackson.util.UtilDatePropertyEditor"/>
             </map>
         </property>
-    </bean>
+    </bean>-->
 
     <bean id="student" class="com.jackson.pojo.User">
         <property name="id" value="1"/>
