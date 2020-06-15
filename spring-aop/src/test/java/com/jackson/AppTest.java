@@ -3,10 +3,8 @@ package com.jackson;
 import com.jackson.pojo.User;
 import com.jackson.service.UserService;
 import org.junit.Test;
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.xml.XmlBeanFactory;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import static org.junit.Assert.assertTrue;
 
@@ -24,9 +22,8 @@ public class AppTest {
 
     @Test
     public void testAop() throws Exception {
-        Resource resource = new ClassPathResource("spring-aop.xml");
-        BeanFactory beanFactory = new XmlBeanFactory(resource);
-        UserService userService = beanFactory.getBean("userService", UserService.class);
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-aop.xml");
+        UserService userService = applicationContext.getBean("userService", UserService.class);
         User user = userService.findById(1L);
         System.out.println(user);
     }

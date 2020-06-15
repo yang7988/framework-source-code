@@ -3,7 +3,9 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/aop
+                           http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <bean id="student" class="com.jackson.pojo.User">
         <property name="id" value="1"/>
@@ -38,11 +40,21 @@
         </property>
     </bean>
 
-    <bean id="userDao" class="com.jackson.dao.impl.UserDaoImpl"/>
+    <bean id="userDao" class="com.jackson.dao.impl.UserDaoImpl">
+        <property name="userList">
+            <list>
+                <ref bean="student"/>
+                <ref bean="teacher"/>
+            </list>
+        </property>
+    </bean>
 
     <bean id="userService" class="com.jackson.service.impl.UserServiceImpl">
         <property name="userDao" ref="userDao"/>
     </bean>
+
+
+    <aop:aspectj-autoproxy/>
 
     <aop:config>
         <aop:pointcut id="selectAll" expression="execution(* com.jackson.service.UserService.*(..))"/>
