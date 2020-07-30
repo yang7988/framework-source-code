@@ -13,9 +13,9 @@
         <setting name="useActualParamName" value="true"/>
     </settings>
 
-    <plugins>
+    <!--<plugins>
         <plugin interceptor="com.jackson.plugins.CustomerInterceptor"/>
-    </plugins>
+    </plugins>-->
 
     <!--<typeAliases>
         <typeAlias type="com.jackson.entity.User" alias="user"/>

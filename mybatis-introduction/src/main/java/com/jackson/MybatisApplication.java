@@ -12,7 +12,7 @@ import java.io.InputStream;
 /**
  * Hello world!
  */
-public class App {
+public class MybatisApplication {
     public static void main(String[] args) throws Exception {
         String resource = "mybatis-config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);

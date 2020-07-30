@@ -9,6 +9,8 @@ import org.apache.ibatis.plugin.Signature;
 import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
 
+import java.util.Properties;
+
 @Intercepts({
         @Signature(type = Executor.class, method = "query", args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class}),
         @Signature(type = Executor.class, method = "close", args = {boolean.class})
@@ -19,5 +21,15 @@ public class CustomerInterceptor implements Interceptor {
     public Object intercept(Invocation invocation) throws Throwable {
         System.out.println("已执行自定义mybatis拦截器target--" + invocation.getTarget() + "---method---" + invocation.getMethod() + "----args---" + invocation.getArgs());
         return invocation.proceed();
+    }
+
+    @Override
+    public Object plugin(Object target) {
+        return target;
+    }
+
+    @Override
+    public void setProperties(Properties properties) {
+
     }
 }
