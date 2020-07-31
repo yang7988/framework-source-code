@@ -19,10 +19,20 @@
         id, name, age, sex, profession, createDate, updateDate
     </sql>
 
-    <select id="selectById" resultMap="BaseResultMap">
+    <select id="selectById" resultMap="BaseResultMap" parameterType="java.util.Map">
         select
         <include refid="Base_Column_List"/>
         from t_user
         where id = #{id,jdbcType=BIGINT}
+    </select>
+
+    <select id="selectByIdCollection" resultMap="BaseResultMap" parameterType="java.util.Collection">
+        select
+        <include refid="Base_Column_List"/>
+        from t_user
+        where id in
+        <foreach collection="collection" item="id" index="index" open="(" separator="," close=")">
+            #{id,jdbcType=BIGINT}
+        </foreach>
     </select>
 </mapper>
