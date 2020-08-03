@@ -8,6 +8,8 @@ import java.util.Map;
 
 public interface UserMapper {
 
+    Integer insert(User user);
+
     User selectById(Map<String, Object> paramMap);
 
     List<User> selectByIdCollection(Collection<? extends Long> collection);
