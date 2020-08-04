@@ -13,4 +13,6 @@ public interface UserMapper {
     User selectById(Map<String, Object> paramMap);
 
     List<User> selectByIdCollection(Collection<? extends Long> collection);
+
+    User selectByIdAndTableName(Map<String, Object> paramMap);
 }

@@ -40,4 +40,11 @@
             #{id,jdbcType=BIGINT}
         </foreach>
     </select>
+
+    <select id="selectByIdAndTableName" resultMap="BaseResultMap" parameterType="java.util.Map">
+        select
+        <include refid="Base_Column_List"/>
+        from ${tableName}
+        where id = #{id,jdbcType=BIGINT}
+    </select>
 </mapper>

@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import java.io.InputStream;
 import java.util.Date;
+import java.util.HashMap;
 
 import static org.junit.Assert.assertTrue;
 
@@ -41,4 +42,21 @@ public class MybatisApplicationTest {
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
         userMapper.insert(user);
     }
+
+    @Test
+    public void testQueryUserByTablename() throws Exception {
+
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        User user = userMapper.selectByIdAndTableName(new HashMap<String, Object>() {{
+            put("tableName", "t_user");
+            put("id", 1L);
+        }});
+        System.out.println(user);
+    }
+
+
 }
