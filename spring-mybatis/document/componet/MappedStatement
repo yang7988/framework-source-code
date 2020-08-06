@@ -1,0 +1,102 @@
+/**
+ * mapper.xml文件中各种(select|insert|update|delete)语句已解析的java对象
+ * 该对象为sql语句的内存表示，并包含配置在sql语句中的各种属性
+ */
+public final class MappedStatement {
+
+    /**
+     * 所在资源
+     */
+    private String resource;
+
+    /**
+     * mybatis全局配置文件句柄
+     */
+    private Configuration configuration;
+
+    /**
+     * sql语句的全命名空间id
+     */
+    private String id;
+
+    /**
+     * sql查询语句获取大小
+     */
+    private Integer fetchSize;
+
+    /**
+     * sql语句配置的超时时间
+     */
+    private Integer timeout;
+
+    /**
+     * 对象sql中statement的类型(STATEMENT, PREPARED, CALLABLE)
+     */
+    private StatementType statementType;
+
+    /**
+     * ResultSetType枚举表示sql中的ResultSet(TYPE_FORWARD_ONLY、TYPE_SCROLL_INSENSITIVE、TYPE_SCROLL_SENSITIVE)
+     */
+    private ResultSetType resultSetType;
+
+    /**
+     * 已解析的完整的sql语句对象，该对象包含BoundSql，代表以解析的sql语句字符串，sql参数等
+     */
+    private SqlSource sqlSource;
+
+    /**
+     * mybatis的二级缓存，在session一级缓存之上的，生命在sql语句中的缓存
+     */
+    private Cache cache;
+
+    /**
+     * 已解析的参数映射
+     */
+    private ParameterMap parameterMap;
+
+    /**
+     * sql查询语句的多结果集映射
+     */
+    private List<ResultMap> resultMaps;
+    private boolean flushCacheRequired;
+
+    /**
+     * sql语句是否使用二级缓存
+     */
+    private boolean useCache;
+    private boolean resultOrdered;
+    /**
+     * sql命令的类型（UNKNOWN, INSERT, UPDATE, DELETE, SELECT, FLUSH）
+     */
+    private SqlCommandType sqlCommandType;
+
+    /**
+     * sql插入语句的key生成器
+     */
+    private KeyGenerator keyGenerator;
+
+    /**
+     * 主键id的java属性名数组
+     */
+    private String[] keyProperties;
+
+    /**
+     * 主键id的数据库列名数组
+     */
+    private String[] keyColumns;
+
+    /**
+     * 是否有嵌套的resultmap结果集
+     */
+    private boolean hasNestedResultMaps;
+    private String databaseId;
+    private Log statementLog;
+
+    private LanguageDriver lang;
+    private String[] resultSets;
+
+    MappedStatement() {
+        // constructor disabled
+    }
+    ...
+}

@@ -1,0 +1,268 @@
+public class Configuration {
+
+    /**
+     * 环境属性(包含事物工厂、数据源)
+     */
+    protected Environment environment;
+
+    /**
+     * 是否启用RowBounds（mybatis内存分页）
+     */
+    protected boolean safeRowBoundsEnabled;
+
+    /**
+     * 是否启用ResultHandler
+     */
+    protected boolean safeResultHandlerEnabled = true;
+
+    /**
+     * 是否将下划线映射到驼峰大小写
+     */
+    protected boolean mapUnderscoreToCamelCase;
+
+    /**
+     * 是否开启积极的延迟加载
+     */
+    protected boolean aggressiveLazyLoading;
+
+    /**
+     * 是否开启启用多个结果集映射
+     */
+    protected boolean multipleResultSetsEnabled = true;
+
+    /**
+     * 是否使用生成的键
+     */
+    protected boolean useGeneratedKeys;
+
+    /**
+     * 是否使用列标签
+     */
+    protected boolean useColumnLabel = true;
+
+    /**
+     * 是否开启缓存
+     */
+    protected boolean cacheEnabled = true;
+
+    /**
+     * 是否在null上的调用setter
+     */
+    protected boolean callSettersOnNulls;
+
+    /**
+     * 是否使用ActualParamName
+     */
+    protected boolean useActualParamName = true;
+
+    /**
+     * 是否为空行返回实例
+     */
+    protected boolean returnInstanceForEmptyRow;
+
+    /**
+     * 日志前缀
+     */
+    protected String logPrefix;
+
+    /**
+     * Log接口的实现类的类名
+     */
+    protected Class<? extends Log> logImpl;
+    protected Class<? extends VFS> vfsImpl;
+
+    /**
+     * mybatis缓存作用域(默认开启session会话级别的缓存)
+     */
+    protected LocalCacheScope localCacheScope = LocalCacheScope.SESSION;
+
+    /**
+     * null值的jdbc类型为JdbcType.OTHER
+     */
+    protected JdbcType jdbcTypeForNull = JdbcType.OTHER;
+
+    /**
+     * 延迟加载触发方法名集合
+     */
+    protected Set<String> lazyLoadTriggerMethods = new HashSet<String>(Arrays.asList(new String[]{"equals", "clone", "hashCode", "toString"}));
+
+    /**
+     * 默认的statement执行语句的超时时间
+     */
+    protected Integer defaultStatementTimeout;
+
+    /**
+     * 默认的结果集获取size
+     */
+    protected Integer defaultFetchSize;
+
+    /**
+     * sql执行器的类型枚举(SIMPLE, REUSE, BATCH)为simple
+     */
+    protected ExecutorType defaultExecutorType = ExecutorType.SIMPLE;
+
+    /**
+     * 自动映射行为枚举(NONE为不自动映射、PARTIAL为自动映射非嵌套的结果集、FULL全量映射包含嵌套结果集)
+     */
+    protected AutoMappingBehavior autoMappingBehavior = AutoMappingBehavior.PARTIAL;
+
+    /**
+     * 自动映射未知的数据列行为为NONE
+     */
+    protected AutoMappingUnknownColumnBehavior autoMappingUnknownColumnBehavior = AutoMappingUnknownColumnBehavior.NONE;
+
+    /**
+     * mybatis的配置文件中的属性变量
+     */
+    protected Properties variables = new Properties();
+
+    /**
+     * 反射工厂，反射工厂将为需要反射的对类生成Reflector对象
+     */
+    protected ReflectorFactory reflectorFactory = new DefaultReflectorFactory();
+
+    /**
+     * 对象工厂(创建对象及对象初始化)
+     */
+    protected ObjectFactory objectFactory = new DefaultObjectFactory();
+
+    /**
+     * 对象包装工厂(通过MetaObject对象参数为需要包装的对象生成ObjectWrapper对象)
+     */
+    protected ObjectWrapperFactory objectWrapperFactory = new DefaultObjectWrapperFactory();
+
+    /**
+     * 默认不开启懒加载
+     */
+    protected boolean lazyLoadingEnabled = false;
+
+    /**
+     * 代理工厂(为目标对象创建代理)
+     */
+    protected ProxyFactory proxyFactory = new JavassistProxyFactory(); // #224 Using internal Javassist instead of OGNL
+
+    protected String databaseId;
+    /**
+     * 用于为加载反序列化的未读属性创建配置
+     */
+    protected Class<?> configurationFactory;
+
+    /**
+     * mapper注册中心，为每个mapper对象生成对应的MapperProxyFactory工程,且将MapperProxyFactory注册到MapperRegistry注册中心
+     */
+    protected final MapperRegistry mapperRegistry = new MapperRegistry(this);
+
+    /**
+     * myabtis的拦截器链
+     */
+    protected final InterceptorChain interceptorChain = new InterceptorChain();
+
+    /**
+     * TypeHandler注册中心每个对应数据库的的字段类型都会生成相应的TypeHandler，且将TypeHandler注册到TypeHandlerRegistry
+     */
+    protected final TypeHandlerRegistry typeHandlerRegistry = new TypeHandlerRegistry();
+
+    /**
+     * 别名注册中心为某种class类型生成字符串别名且注册到TypeAliasRegistry
+     */
+    protected final TypeAliasRegistry typeAliasRegistry = new TypeAliasRegistry();
+
+    /**
+     * 语言驱动注册中心(语言驱动是能够创建SqlSource的驱动，默认为XMLLanguageDriver)
+     */
+    protected final LanguageDriverRegistry languageRegistry = new LanguageDriverRegistry();
+
+    /**
+     * 将mapper.xml、注解sql中各种sql语句生成MappedStatement内存对象，并集中缓存，且为后续sql执行，找到语句的声明位置
+     */
+    protected final Map<String, MappedStatement> mappedStatements = new StrictMap<MappedStatement>("Mapped Statements collection");
+
+    /**
+     * mybatis的缓存配置集合
+     */
+    protected final Map<String, Cache> caches = new StrictMap<Cache>("Caches collection");
+
+    /**
+     * 将mapper.xml、注解sql中各种已解析的ResultMap缓存
+     */
+    protected final Map<String, ResultMap> resultMaps = new StrictMap<ResultMap>("Result Maps collection");
+
+    /**
+     * 将mapper.xml、注解sql中各种已解析的ParameterMap缓存
+     */
+    protected final Map<String, ParameterMap> parameterMaps = new StrictMap<ParameterMap>("Parameter Maps collection");
+
+    /**
+     * 将mapper.xml、注解sql中各种已解析的KeyGenerator缓存
+     */
+    protected final Map<String, KeyGenerator> keyGenerators = new StrictMap<KeyGenerator>("Key Generators collection");
+
+    /**
+     * 已加载过的资源集合
+     */
+    protected final Set<String> loadedResources = new HashSet<String>();
+
+    /**
+     * 将mapper.xml、注解sql中各种已解析的<sql></sql>片段缓存
+     */
+    protected final Map<String, XNode> sqlFragments = new StrictMap<XNode>("XML fragments parsed from previous mappers");
+
+    protected final Collection<XMLStatementBuilder> incompleteStatements = new LinkedList<XMLStatementBuilder>();
+    protected final Collection<CacheRefResolver> incompleteCacheRefs = new LinkedList<CacheRefResolver>();
+    protected final Collection<ResultMapResolver> incompleteResultMaps = new LinkedList<ResultMapResolver>();
+    protected final Collection<MethodResolver> incompleteMethods = new LinkedList<MethodResolver>();
+
+    /*
+     * 映射保存cache-ref关系。键是*引用缓存绑定到另一个名称空间的名称空间，值是实际缓存绑定到的名称空间
+     */
+    protected final Map<String, String> cacheRefMap = new HashMap<String, String>();
+
+    public Configuration(Environment environment) {
+        this();
+        this.environment = environment;
+    }
+
+    // 创建Configuration对象注册各种类型的别名
+    public Configuration() {
+        //  事物工厂别名
+        typeAliasRegistry.registerAlias("JDBC", JdbcTransactionFactory.class);
+        typeAliasRegistry.registerAlias("MANAGED", ManagedTransactionFactory.class);
+
+        //  数据源工厂别名
+        typeAliasRegistry.registerAlias("JNDI", JndiDataSourceFactory.class);
+        typeAliasRegistry.registerAlias("POOLED", PooledDataSourceFactory.class);
+        typeAliasRegistry.registerAlias("UNPOOLED", UnpooledDataSourceFactory.class);
+
+        //  缓存类型别名
+        typeAliasRegistry.registerAlias("PERPETUAL", PerpetualCache.class);
+        typeAliasRegistry.registerAlias("FIFO", FifoCache.class);
+        typeAliasRegistry.registerAlias("LRU", LruCache.class);
+        typeAliasRegistry.registerAlias("SOFT", SoftCache.class);
+        typeAliasRegistry.registerAlias("WEAK", WeakCache.class);
+
+        typeAliasRegistry.registerAlias("DB_VENDOR", VendorDatabaseIdProvider.class);
+
+        //  语言驱动器类型别名
+        typeAliasRegistry.registerAlias("XML", XMLLanguageDriver.class);
+        typeAliasRegistry.registerAlias("RAW", RawLanguageDriver.class);
+
+        //  日志类型别名
+        typeAliasRegistry.registerAlias("SLF4J", Slf4jImpl.class);
+        typeAliasRegistry.registerAlias("COMMONS_LOGGING", JakartaCommonsLoggingImpl.class);
+        typeAliasRegistry.registerAlias("LOG4J", Log4jImpl.class);
+        typeAliasRegistry.registerAlias("LOG4J2", Log4j2Impl.class);
+        typeAliasRegistry.registerAlias("JDK_LOGGING", Jdk14LoggingImpl.class);
+        typeAliasRegistry.registerAlias("STDOUT_LOGGING", StdOutImpl.class);
+        typeAliasRegistry.registerAlias("NO_LOGGING", NoLoggingImpl.class);
+
+        //  代理工厂别名
+        typeAliasRegistry.registerAlias("CGLIB", CglibProxyFactory.class);
+        typeAliasRegistry.registerAlias("JAVASSIST", JavassistProxyFactory.class);
+
+        //  语言驱动注册中心设置默认的语言驱动类型为XMLLanguageDriver
+        languageRegistry.setDefaultDriverClass(XMLLanguageDriver.class);
+        //  注册RawLanguageDriver
+        languageRegistry.register(RawLanguageDriver.class);
+    }
+    ....
+}

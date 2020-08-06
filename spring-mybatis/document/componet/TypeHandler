@@ -1,0 +1,48 @@
+/**
+ * 对应的sql语句的字段的java属性的类型处理器，其实现类为各基本类型、包装类型、对象类型处理器等
+ * （IntegerTypeHandler、StringTypeHandler、ObjectTypeHandler、。。。）
+ */
+public interface TypeHandler<T> {
+
+    /**
+     * 为参数解析复制处理由各子类实现，例如IntegerTypeHandler#ps.setInt(i, parameter);
+     *
+     * @param ps        PreparedStatement
+     * @param i         参数索引
+     * @param parameter 参数值
+     * @param jdbcType  参数对应的jdbc类型
+     * @throws SQLException sql异常
+     */
+    void setParameter(PreparedStatement ps, int i, T parameter, JdbcType jdbcType) throws SQLException;
+
+    /**
+     * 从ResultSet集合中获取值类型处理,例如例如IntegerTypeHandler#rs.getInt(columnName);
+     *
+     * @param rs         ResultSet
+     * @param columnName 列名
+     * @return 返回子类型处理的结果
+     * @throws SQLException sql异常
+     */
+    T getResult(ResultSet rs, String columnName) throws SQLException;
+
+    /**
+     * 从ResultSet集合中获取值类型处理,例如例如IntegerTypeHandler#rs.getInt(columnIndex);
+     *
+     * @param rs          ResultSet
+     * @param columnIndex 列所处的sql字段的索引
+     * @return 返回子类型处理的结果
+     * @throws SQLException sql异常
+     */
+    T getResult(ResultSet rs, int columnIndex) throws SQLException;
+
+    /**
+     * 从ResultSet集合中获取值类型处理,例如例如IntegerTypeHandler#rs.getInt(columnIndex);
+     *
+     * @param cs          CallableStatement
+     * @param columnIndex 列所处的sql字段的索引
+     * @return 返回子类型处理的结果
+     * @throws SQLException sql异常
+     */
+    T getResult(CallableStatement cs, int columnIndex) throws SQLException;
+
+}

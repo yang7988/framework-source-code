@@ -1,0 +1,69 @@
+/**
+ * sql解析的字段映射对象
+ */
+public class ResultMapping {
+
+    private Configuration configuration;
+
+    /**
+     * java属性名
+     */
+    private String property;
+
+    /**
+     * 数据库字段名
+     */
+    private String column;
+
+    /**
+     * java属性的类型
+     */
+    private Class<?> javaType;
+
+    /**
+     * 字段对应的jdbc类型
+     */
+    private JdbcType jdbcType;
+
+    /**
+     * java属性的类型处理器
+     */
+    private TypeHandler<?> typeHandler;
+
+    /**
+     * 嵌套的结果集id
+     */
+    private String nestedResultMapId;
+
+    /**
+     * 嵌套的查询id
+     */
+    private String nestedQueryId;
+
+    /**
+     * 非空列名
+     */
+    private Set<String> notNullColumns;
+
+    /**
+     * 列名前缀
+     */
+    private String columnPrefix;
+
+    /**
+     * ResultFlag枚举
+     */
+    private List<ResultFlag> flags;
+
+    /**
+     * 嵌套的组合ResultMapping
+     */
+    private List<ResultMapping> composites;
+    private String resultSet;
+    private String foreignColumn;
+    private boolean lazy;
+
+    ResultMapping() {
+    }
+    ....
+}
