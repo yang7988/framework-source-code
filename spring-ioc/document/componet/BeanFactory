@@ -1,0 +1,44 @@
+/**
+BeanFactory该接口是bean工厂的顶级接口
+**/
+public interface BeanFactory {
+
+	String FACTORY_BEAN_PREFIX = "&";
+
+    //  根据bean名称获取bean的实例
+	Object getBean(String name) throws BeansException;
+
+    //  根据bean名称以及bean的class获取bean的实例
+	<T> T getBean(String name, Class<T> requiredType) throws BeansException;
+
+    //  根据bean的class以及参数获取bean的实例
+	Object getBean(String name, Object... args) throws BeansException;
+
+    // 根据bean的class获取bean的实例
+	<T> T getBean(Class<T> requiredType) throws BeansException;
+
+    // 根据bean的class以及参数获取bean的实例
+	<T> T getBean(Class<T> requiredType, Object... args) throws BeansException;
+
+    // bean工厂是否包含指定名称的bean
+	boolean containsBean(String name);
+
+    // 判断bean容器中的bean是否是单例的
+	boolean isSingleton(String name) throws NoSuchBeanDefinitionException;
+
+    // 判断bean容器中的bean是否是原型的
+	boolean isPrototype(String name) throws NoSuchBeanDefinitionException;
+
+    // 判断bean是否符合某种类型匹配
+	boolean isTypeMatch(String name, ResolvableType typeToMatch) throws NoSuchBeanDefinitionException;
+
+    // 判断bean是否符合某种类型匹配
+	boolean isTypeMatch(String name, Class<?> typeToMatch) throws NoSuchBeanDefinitionException;
+
+    // 获取bean的类型
+	Class<?> getType(String name) throws NoSuchBeanDefinitionException;
+
+    // 获取bean的别名
+	String[] getAliases(String name);
+
+}
