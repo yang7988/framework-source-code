@@ -16,6 +16,8 @@
         <module>mybatis-introduction</module>
         <module>spring-mybatis</module>
         <module>netty-introduction</module>
+        <module>spring-dubbo</module>
+        <module>spring-boot</module>
     </modules>
 
     <name>framework-introduction</name>
