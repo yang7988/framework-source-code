@@ -5,9 +5,9 @@
 
     <import resource="spring-ioc-pojo.xml"/>
 
-    <bean id="userDao" class="com.jackson.dao.impl.UserDaoImpl"/>
+    <bean id="userDao" class="com.jackson.business.dao.impl.UserDaoImpl"/>
 
-    <bean id="userService" class="com.jackson.service.impl.UserServiceImpl">
+    <bean id="userService" class="com.jackson.business.service.impl.UserServiceImpl">
         <property name="userDao" ref="userDao"/>
     </bean>
 

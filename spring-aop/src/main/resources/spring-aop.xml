@@ -7,7 +7,7 @@
                            http://www.springframework.org/schema/aop
                            http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <bean id="student" class="com.jackson.pojo.User">
+    <bean id="student" class="com.jackson.business.pojo.User">
         <property name="id" value="1"/>
         <property name="name" value="jackson"/>
         <property name="age" value="25"/>
@@ -23,7 +23,7 @@
         </property>
     </bean>
 
-    <bean id="teacher" class="com.jackson.pojo.User">
+    <bean id="teacher" class="com.jackson.business.pojo.User">
         <property name="id" value="1"/>
         <property name="name" value="rick"/>
         <property name="age" value="35"/>
@@ -40,7 +40,7 @@
         </property>
     </bean>
 
-    <bean id="userDao" class="com.jackson.dao.impl.UserDaoImpl">
+    <bean id="userDao" class="com.jackson.business.dao.impl.UserDaoImpl">
         <property name="userList">
             <list>
                 <ref bean="student"/>
@@ -49,7 +49,7 @@
         </property>
     </bean>
 
-    <bean id="userService" class="com.jackson.service.impl.UserServiceImpl">
+    <bean id="userService" class="com.jackson.business.service.impl.UserServiceImpl">
         <property name="userDao" ref="userDao"/>
     </bean>
 
@@ -57,7 +57,7 @@
     <aop:aspectj-autoproxy/>
 
     <aop:config>
-        <aop:pointcut id="selectAll" expression="execution(* com.jackson.service.UserService.*(..))"/>
+        <aop:pointcut id="selectAll" expression="execution(* com.jackson.business.service.UserService.*(..))"/>
         <aop:aspect id="log" ref="logging">
             <aop:before pointcut-ref="selectAll" method="beforeAdvice"/>
             <aop:after pointcut-ref="selectAll" method="afterAdvice"/>
