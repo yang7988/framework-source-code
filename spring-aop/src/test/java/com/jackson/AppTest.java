@@ -1,7 +1,7 @@
 package com.jackson;
 
-import com.jackson.business.pojo.User;
-import com.jackson.business.service.UserService;
+import com.jackson.ioc.pojo.User;
+import com.jackson.ioc.service.UserService;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

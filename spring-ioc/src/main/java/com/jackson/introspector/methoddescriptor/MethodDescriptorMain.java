@@ -1,6 +1,6 @@
 package com.jackson.introspector.methoddescriptor;
 
-import com.jackson.business.pojo.User;
+import com.jackson.ioc.pojo.User;
 
 import java.beans.MethodDescriptor;
 import java.beans.ParameterDescriptor;

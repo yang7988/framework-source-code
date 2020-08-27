@@ -1,4 +1,4 @@
-package com.jackson.business.pojo;
+package com.jackson.ioc.pojo;
 
 import java.util.Date;
 import java.util.List;

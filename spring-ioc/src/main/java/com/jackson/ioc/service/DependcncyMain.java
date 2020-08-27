@@ -1,6 +1,6 @@
-package com.jackson.business.service;
+package com.jackson.ioc.service;
 
-import com.jackson.business.pojo.User;
+import com.jackson.ioc.pojo.User;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;

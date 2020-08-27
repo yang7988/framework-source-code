@@ -1,8 +1,8 @@
-package com.jackson.business.service.impl;
+package com.jackson.ioc.service.impl;
 
-import com.jackson.business.dao.UserDao;
-import com.jackson.business.pojo.User;
-import com.jackson.business.service.UserService;
+import com.jackson.ioc.dao.UserDao;
+import com.jackson.ioc.pojo.User;
+import com.jackson.ioc.service.UserService;
 
 import java.util.List;
 

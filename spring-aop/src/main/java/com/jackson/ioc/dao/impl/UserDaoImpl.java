@@ -1,7 +1,7 @@
-package com.jackson.business.dao.impl;
+package com.jackson.ioc.dao.impl;
 
-import com.jackson.business.dao.UserDao;
-import com.jackson.business.pojo.User;
+import com.jackson.ioc.dao.UserDao;
+import com.jackson.ioc.pojo.User;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Collections;

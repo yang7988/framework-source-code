@@ -1,10 +1,10 @@
-package com.jackson.business.service;
+package com.jackson.ioc.dao;
 
-import com.jackson.business.pojo.User;
+import com.jackson.ioc.pojo.User;
 
 import java.util.List;
 
-public interface UserService {
+public interface UserDao {
 
     /**
      * 通过ID 查找用户
@@ -12,7 +12,7 @@ public interface UserService {
      * @param id 用户id
      * @return user
      */
-    User findById(Long id);
+    User getById(Long id);
 
     /**
      * 通过用户名称 查找用户
@@ -20,7 +20,7 @@ public interface UserService {
      * @param name 用户姓名
      * @return user列表
      */
-    List<User> findByName(String name);
+    List<User> getByName(String name);
 
     /**
      * 通过用户职业 查找用户
@@ -28,5 +28,5 @@ public interface UserService {
      * @param profession 用户职业
      * @return user列表
      */
-    List<User> findByProfession(String profession);
+    List<User> getByProfession(String profession);
 }

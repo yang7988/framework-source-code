@@ -1,6 +1,6 @@
 package com.jackson.introspector.propertydescriptor;
 
-import com.jackson.business.pojo.User;
+import com.jackson.ioc.pojo.User;
 
 import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
