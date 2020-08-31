@@ -1,4 +1,4 @@
-package com.jackson.event.extend;
+package com.jackson.event;
 
 import org.springframework.context.ApplicationEvent;
 

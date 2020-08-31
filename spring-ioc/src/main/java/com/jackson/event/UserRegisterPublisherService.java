@@ -1,6 +1,5 @@
-package com.jackson.event.extend;
+package com.jackson.event;
 
-import com.jackson.event.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.ApplicationEventPublisherAware;

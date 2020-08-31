@@ -1,6 +1,7 @@
 package com.jackson.event.extend;
 
 import com.jackson.event.User;
+import com.jackson.event.UserRegisterEvent;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.event.SmartApplicationListener;
 import org.springframework.stereotype.Component;
