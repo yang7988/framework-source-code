@@ -1,35 +1,32 @@
 package com.jackson.aspect;
 
+import org.aspectj.lang.annotation.*;
+import org.springframework.stereotype.Component;
+
+@Component
+@Aspect
 public class Logging {
 
-    /**
-     * This is the method which I would like to execute
-     * before a selected method execution.
-     */
+    @Pointcut("execution(* com.jackson.service.UserService.*(..))")
+    public void pointCut() {
+    }
+
+    @Before("pointCut()")
     public void beforeAdvice() {
         System.out.println("Going to setup stedent profile.");
     }
 
-    /**
-     * This is the method which I would like to execute
-     * when any method returns.
-     */
+    @After("pointCut()")
     public void afterAdvice() {
         System.out.println("Stedent profile has been setup.");
     }
 
-    /**
-     * This is the method which I would like to execute
-     * when any method returns.
-     */
+    @AfterReturning(value = "pointCut()", returning = "retVal")
     public void afterReturningAdvice(Object retVal) {
         System.out.println("Returning: " + retVal.toString());
     }
 
-    /**
-     * This is the method which I would like to execute
-     * if there is an exception raised.
-     */
+    @AfterThrowing(value = "pointCut()", throwing = "ex")
     public void AfterThrowingAdvice(IllegalArgumentException ex) {
         System.out.println("There has been an exception: " + ex.toString());
     }
