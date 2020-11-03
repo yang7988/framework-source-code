@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jackson.mapper.UserMapper">
+
+    <insert id="insert" parameterType="com.jackson.entity.User">
+        insert into t_user (name, age, sex, profession, createDate, updateDate)
+        values (#{name}, #{age}, #{sex}, #{profession}, #{createDate}, #{updateDate})
+    </insert>
+
+    <select id="selectById" resultType="com.jackson.entity.User" parameterType="java.lang.Long">
+        select name, age, sex, profession, createDate, updateDate
+        from t_user
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+
+    <update id="updateById" parameterType="com.jackson.entity.User">
+        update t_user
+        set name=#{name},
+            age=#{age},
+            sex=#{sex},
+            profession=#{profession},
+            createDate=#{createDate},
+            updateDate=#{updateDate}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteById" parameterType="java.lang.Long">
+        delete
+        from t_user
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+</mapper>
