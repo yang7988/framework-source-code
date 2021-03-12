@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -21,8 +23,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public int update(User user) {
-        return userMapper.updateById(user);
+        int i = userMapper.updateById(user);
+        try {
+            Thread.sleep(80000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return i;
     }
 
     @Override
@@ -33,5 +42,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public int delete(Long id) {
         return userMapper.deleteById(id);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public List<User> selectByAge(Integer age) {
+        return userMapper.selectByAge(age);
     }
 }

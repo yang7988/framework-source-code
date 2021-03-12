@@ -9,7 +9,7 @@ import java.util.Date;
 /**
  * Hello world!
  */
-public class App {
+public class JdbcTransactionApplication {
     private static UserService userService = new ClassPathXmlApplicationContext("spring-transaction.xml").getBean(UserService.class);
 
 

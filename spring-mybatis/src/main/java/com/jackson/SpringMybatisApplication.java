@@ -9,12 +9,22 @@ import java.util.Date;
 /**
  * Hello world!
  */
-public class App {
+public class SpringMybatisApplication {
     private static UserService userService = new ClassPathXmlApplicationContext("spring-mybatis.xml").getBean(UserService.class);
 
 
-    public static void main(String[] args) {
-        insert();
+    public static void main(String[] args) throws Exception {
+        User user = select();
+        user.setName("杨伟武");
+        update(user);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                user.setName("赵凯平");
+                update(user);
+            }
+        }).start();
+        System.out.println("主线程结束");
     }
 
     public static void insert() {
@@ -29,12 +39,12 @@ public class App {
         System.out.println(String.format("插入%s条数据", save));
     }
 
-    public static void update() {
-
+    public static void update(User user) {
+        userService.update(user);
     }
 
-    public static void select() {
-
+    public static User select() {
+        return userService.select(4L);
     }
 
     public static void delete() {

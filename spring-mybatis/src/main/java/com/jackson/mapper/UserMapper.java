@@ -2,6 +2,8 @@ package com.jackson.mapper;
 
 import com.jackson.entity.User;
 
+import java.util.List;
+
 public interface UserMapper {
 
     int insert(User user);
@@ -11,4 +13,6 @@ public interface UserMapper {
     User selectById(Long id);
 
     int deleteById(Long id);
+
+    List<User> selectByAge(Integer age);
 }

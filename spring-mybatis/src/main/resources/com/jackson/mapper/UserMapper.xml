@@ -6,12 +6,12 @@
 <mapper namespace="com.jackson.mapper.UserMapper">
 
     <insert id="insert" parameterType="com.jackson.entity.User">
-        insert into t_user (name, age, sex, profession, createDate, updateDate)
+        insert into t_user (name, age, sex, profession, create_date, update_date)
         values (#{name}, #{age}, #{sex}, #{profession}, #{createDate}, #{updateDate})
     </insert>
 
     <select id="selectById" resultType="com.jackson.entity.User" parameterType="java.lang.Long">
-        select name, age, sex, profession, createDate, updateDate
+        select id, name, age, sex, profession, create_date createDate, update_date updateDate
         from t_user
         where id = #{id,jdbcType=BIGINT}
     </select>
@@ -22,8 +22,8 @@
             age=#{age},
             sex=#{sex},
             profession=#{profession},
-            createDate=#{createDate},
-            updateDate=#{updateDate}
+            create_date=#{createDate},
+            update_date=#{updateDate}
         where id = #{id}
     </update>
 
@@ -32,4 +32,10 @@
         from t_user
         where id = #{id,jdbcType=BIGINT}
     </delete>
+
+    <select id="selectByAge" resultType="com.jackson.entity.User" parameterType="java.lang.Integer">
+        select name, age, sex, profession, create_date createDate, update_date updateDate
+        from t_user
+        where age >= #{age,jdbcType=INTEGER}
+    </select>
 </mapper>
